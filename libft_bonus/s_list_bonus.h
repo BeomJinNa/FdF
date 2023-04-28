@@ -1,32 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   flags_bonus.h                                      :+:      :+:    :+:   */
+/*   s_list_bonus.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/02 16:05:16 by bena              #+#    #+#             */
-/*   Updated: 2023/04/29 04:44:16 by bena             ###   ########.fr       */
+/*   Created: 2023/04/29 04:25:35 by bena              #+#    #+#             */
+/*   Updated: 2023/04/29 04:30:48 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FLAGS_BONUS_H
-# define FLAGS_BONUS_H
+#ifndef S_LIST_BONUS_H
+# define S_LIST_BONUS_H
 
-# define F_NO_SIGN 0
-# define F_SIGN_SPACE 1
-# define F_SIGN_PLUS 2
-# define F_NO_PADDING 0
-# define F_ZERO_PADDING 1
-# define F_ZERO_PRECISION 2
-
-typedef struct s_flags
+typedef struct s_list
 {
-	char	left_align;
-	char	zero_padding;
-	char	sign;
-	char	base_visible;
-	size_t	width;
-	size_t	precision;
-}			t_flags;
+	void			*content;
+	struct s_list	*next;
+}					t_list;
 #endif

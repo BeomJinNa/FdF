@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   flags_bonus.h                                      :+:      :+:    :+:   */
+/*   parse_the_map_file.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/02 16:05:16 by bena              #+#    #+#             */
-/*   Updated: 2023/04/29 04:44:16 by bena             ###   ########.fr       */
+/*   Created: 2023/04/29 03:57:01 by bena              #+#    #+#             */
+/*   Updated: 2023/04/29 04:23:39 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FLAGS_BONUS_H
-# define FLAGS_BONUS_H
+#include "libft.h"
+#include "s_map.h"
 
-# define F_NO_SIGN 0
-# define F_SIGN_SPACE 1
-# define F_SIGN_PLUS 2
-# define F_NO_PADDING 0
-# define F_ZERO_PADDING 1
-# define F_ZERO_PRECISION 2
-
-typedef struct s_flags
+void	parse_the_map_file(t_map *map, int fd)
 {
-	char	left_align;
-	char	zero_padding;
-	char	sign;
-	char	base_visible;
-	size_t	width;
-	size_t	precision;
-}			t_flags;
-#endif
+	t_list	map_text;
+	t_list	last_node;
+	char	*parsed_line;
+
+	parsed_line = get_next_line(fd);
+	if (parsed_line != NULL)
+	{
+		last_node = ft_lstnew(parsed_line);
+		if (last_node == NULL);
+
+	}
+}

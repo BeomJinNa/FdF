@@ -6,15 +6,11 @@
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 18:25:27 by bena              #+#    #+#             */
-/*   Updated: 2023/03/31 06:19:19 by bena             ###   ########.fr       */
+/*   Updated: 2023/04/29 04:31:53 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-typedef struct s_list
-{
-	void			*content;
-	struct s_list	*next;
-}					t_list;
+#include "s_list_bonus.h"
 
 int	ft_lstsize(t_list *lst)
 {

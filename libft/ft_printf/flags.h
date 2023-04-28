@@ -6,7 +6,7 @@
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 16:05:16 by bena              #+#    #+#             */
-/*   Updated: 2023/02/22 12:41:02 by bena             ###   ########.fr       */
+/*   Updated: 2023/04/29 04:43:32 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,13 @@
 # define F_ZERO_PADDING 1
 # define F_ZERO_PRECISION 2
 
-typedef struct s_flags{
+typedef struct s_flags
+{
 	char	left_align;
 	char	zero_padding;
 	char	sign;
 	char	base_visible;
 	size_t	width;
 	size_t	precision;
-}	t_flags;
+}			t_flags;
 #endif

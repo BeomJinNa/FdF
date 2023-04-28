@@ -6,15 +6,11 @@
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 18:12:17 by bena              #+#    #+#             */
-/*   Updated: 2023/03/31 06:19:10 by bena             ###   ########.fr       */
+/*   Updated: 2023/04/29 04:32:35 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-typedef struct s_list
-{
-	void			*content;
-	struct s_list	*next;
-}					t_list;
+#include "s_list_bonus.h"
 
 void	ft_lstadd_front(t_list **lst, t_list *new)
 {
