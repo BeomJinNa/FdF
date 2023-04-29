@@ -24,7 +24,8 @@ LIBFT_B	= libft_bonus/libft_bonus.a
 
 #sources=======================================================================
 
-SRCS	= srcs/main.c
+SRCS	= srcs/main.c \
+		  srcs/parse_the_map_file.c
 
 B_SRCS	=
 

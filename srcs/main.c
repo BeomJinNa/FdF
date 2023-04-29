@@ -6,7 +6,7 @@
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 21:53:11 by bena              #+#    #+#             */
-/*   Updated: 2023/04/29 04:00:29 by bena             ###   ########.fr       */
+/*   Updated: 2023/04/29 11:03:59 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,11 @@
 #include "libft.h"
 #include "s_map.h"
 
+void		parse_the_map_file(t_map *map, int fd);
 static int	wrong_args(void);
 static int	open_error(void);
 static int	parsing_error(void);
+static void	release_points(t_point **point);
 
 int	main(int ac, char **av)
 {
@@ -31,9 +33,10 @@ int	main(int ac, char **av)
 	if (fd == -1)
 		return (open_error());
 	parse_the_map_file(&map, fd);
-	if (map == NULL)
-		return (parsing_error());
 	close(fd);
+	if (map.point == NULL)
+		return (parsing_error());
+	release_points(map.point);
 	return (0);
 }
 
@@ -51,6 +54,18 @@ static int	open_error(void)
 
 static int	parsing_error(void)
 {
-	perror("Error loading map");
+	ft_putstr_fd("Error loading map\n", 2);
 	return (1);
+}
+
+static void	release_points(t_point **point)
+{
+	t_point	**ptr;
+
+	if (point == NULL)
+		return ;
+	ptr = point;
+	while (*ptr != NULL)
+		free(*ptr++);
+	free(point);
 }
