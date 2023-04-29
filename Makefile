@@ -25,7 +25,14 @@ LIBFT_B	= libft_bonus/libft_bonus.a
 #sources=======================================================================
 
 SRCS	= srcs/main.c \
-		  srcs/parse_the_map_file.c
+		  srcs/parse_the_map_file.c \
+		  srcs/run_mlx.c \
+		  srcs/run_mlx/hooks.c \
+		  srcs/run_mlx/color.c \
+		  srcs/run_mlx/vector.c \
+		  srcs/run_mlx/mlx_img.c \
+		  srcs/run_mlx/write_dots_info.c \
+		  srcs/run_mlx/write_proj_info.c
 
 B_SRCS	=
 

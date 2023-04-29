@@ -6,7 +6,7 @@
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 21:53:11 by bena              #+#    #+#             */
-/*   Updated: 2023/04/29 11:03:59 by bena             ###   ########.fr       */
+/*   Updated: 2023/05/14 15:40:43 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,28 +15,50 @@
 #include <stdio.h>
 #include "libft.h"
 #include "s_map.h"
+#include "mlx.h"
 
 void		parse_the_map_file(t_map *map, int fd);
+void		run_mlx(t_status *stat);
+void		release_points(t_point **point);
 static int	wrong_args(void);
 static int	open_error(void);
 static int	parsing_error(void);
-static void	release_points(t_point **point);
 
+//TEST
+void	leaks(void)
+{
+	system ("leaks fdf");
+}
+//TEST
 int	main(int ac, char **av)
 {
-	int		fd;
-	t_map	map;
+	int			fd;
+	t_status	stat;
 
+	atexit(leaks);//TEST
 	if (ac != 2)
 		return (wrong_args());
 	fd = open(av[1], O_RDONLY);
 	if (fd == -1)
 		return (open_error());
-	parse_the_map_file(&map, fd);
+	parse_the_map_file(&stat.map, fd);
 	close(fd);
-	if (map.point == NULL)
+	if (stat.map.point == NULL)
 		return (parsing_error());
-	release_points(map.point);
+	stat.filename = av[1];
+	stat.win_width = 1920;
+	stat.win_height = 1080;
+	//TEST START
+	printf("parsed map\n");
+	for (int i = 0 ; i < stat.map.height ; i++)
+	{
+		for (int j = 0 ; j < stat.map.width ; j++)
+			printf("%3d ", stat.map.point[i][j].value);
+		printf("\n");
+	}
+	//TEST END
+	run_mlx(&stat);
+	release_points(stat.map.point);
 	return (0);
 }
 
@@ -58,7 +80,7 @@ static int	parsing_error(void)
 	return (1);
 }
 
-static void	release_points(t_point **point)
+void	release_points(t_point **point)
 {
 	t_point	**ptr;
 
