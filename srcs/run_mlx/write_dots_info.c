@@ -6,12 +6,17 @@
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 15:57:04 by bena              #+#    #+#             */
-/*   Updated: 2023/05/14 16:38:45 by bena             ###   ########.fr       */
+/*   Updated: 2023/05/15 18:57:29 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <math.h>
 #include "s_map.h"
 #include "color.h"
+
+void	get_displacement(double disp[3], t_point *point, t_status *stat);
+double	dot_product(double v1[3], double v2[3]);
+static double	get_distance(t_point *point, t_status *stat);
 
 void	write_dots_info(t_status *stat)
 {
@@ -30,11 +35,22 @@ void	write_dots_info(t_status *stat)
 				point->color = stat->colormap(point->value, 0);
 			else
 				point->color = trgb(0, 255, 255, 255);
-			point->x = (double)(i * stat->scale);
-			point->y = (double)(j * stat->scale);
-			point->z = (double)(point->value * stat->scale * stat->z_ratio);
+			point->i = i;
+			point->j = j;
+			point->x = (i * stat->scale);
+			point->y = (j * stat->scale);
+			point->z = (point->value * stat->scale * stat->z_ratio);
+			point->distance = get_distance(point, stat);
 			j++;
 		}
 		i++;
 	}
+}
+
+static double	get_distance(t_point *point, t_status *stat)
+{
+	double	displacement[3];
+
+	get_displacement(displacement, point, stat);
+	return (dot_product(displacement, stat->pov_vec));
 }

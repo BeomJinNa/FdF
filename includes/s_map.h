@@ -6,7 +6,7 @@
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 03:58:53 by bena              #+#    #+#             */
-/*   Updated: 2023/05/14 20:32:18 by bena             ###   ########.fr       */
+/*   Updated: 2023/05/15 20:19:26 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,23 @@
 
 typedef struct s_point
 {
+	int		i;
+	int		j;
 	int		value;
 	int		color;
+	int		proj_i;
+	int		proj_j;
 	double	x;
 	double	y;
 	double	z;
-	int		proj_i;
-	int		proj_j;
+	double	distance;
 }			t_point;
 
 typedef struct s_map
 {
 	int		width;
 	int		height;
+	t_point	**index;
 	t_point	**point;
 }			t_map;
 
@@ -38,6 +42,8 @@ typedef struct s_status
 	void	*win;
 	int		win_width;
 	int		win_height;
+	int		offset_i;
+	int		offset_j;
 	double	scale;
 	double	z_ratio;
 	double	pov_i;
@@ -49,8 +55,6 @@ typedef struct s_status
 	double	pov_vec[3];
 	double	proj_vec_i[3];
 	double	proj_vec_j[3];
-	int		offset_i;
-	int		offset_j;
 	int		(*colormap)(int, int);
 	t_map	map;
 }			t_status;
