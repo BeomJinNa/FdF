@@ -1,36 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   color.c                                            :+:      :+:    :+:   */
+/*   convert_line_feed_to_space.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/27 22:23:16 by bena              #+#    #+#             */
-/*   Updated: 2023/05/24 00:29:34 by bena             ###   ########.fr       */
+/*   Created: 2023/05/24 08:10:52 by bena              #+#    #+#             */
+/*   Updated: 2023/05/24 08:13:46 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	trgb(int transparency, int red, int green, int blue)
-{
-	return ((transparency << 24) | (red << 16) | (green << 8) | blue);
-}
+#include "libft.h"
 
-int	transparency(int trgb)
+void convert_line_feed_to_space(char *line)
 {
-	return ((trgb >> 24) & 0xFF);
-}
+	char	*ptr;
 
-int	red(int trgb)
-{
-	return ((trgb >> 16) & 0xFF);
-}
-
-int	green(int trgb)
-{
-	return ((trgb >> 8) & 0xFF);
-}
-
-int	blue(int trgb)
-{
-	return (trgb & 0xFF);
+	ptr = ft_strchr(line, '\n');
+	if (ptr != NULL)
+		*ptr = ' ';
 }

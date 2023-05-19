@@ -6,7 +6,7 @@
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 16:40:49 by bena              #+#    #+#             */
-/*   Updated: 2023/05/15 20:15:45 by bena             ###   ########.fr       */
+/*   Updated: 2023/05/24 06:50:24 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,14 +51,14 @@ static void	set_projected_point(t_point *point, t_status *stat)
 	double	displacement[3];
 
 	get_displacement(displacement, point, stat);
-	temp = dot_product(displacement, stat->proj_vec_i);
-	if (fabs(temp + (double)stat->offset_i) > (double)stat->win_width)
+	temp = dot_product(displacement, stat->proj_vec_x);
+	if (fabs(temp + (double)stat->offset_x) > (double)stat->win_width_2)
 		point->distance = -1.0;
-	point->proj_i = (int)temp + stat->offset_i;
-	temp = dot_product(displacement, stat->proj_vec_j);
-	if (fabs(temp + (double)stat->offset_j) > (double)stat->win_height)
+	point->proj_x = (int)temp + stat->offset_x;
+	temp = dot_product(displacement, stat->proj_vec_y);
+	if (fabs(temp + (double)stat->offset_y) > (double)stat->win_height_2)
 		point->distance = -1.0;
-	point->proj_j = (int)temp + stat->offset_j;
+	point->proj_y = (int)temp + stat->offset_y;
 }
 
 /*

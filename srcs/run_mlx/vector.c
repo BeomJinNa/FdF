@@ -6,7 +6,7 @@
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 16:52:35 by bena              #+#    #+#             */
-/*   Updated: 2023/05/14 20:07:19 by bena             ###   ########.fr       */
+/*   Updated: 2023/05/24 05:13:49 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,16 @@
 
 void	sphere_to_vec(double vector[3], double theta, double phi)
 {
+	double	size;
+
 	vector[0] = cos(theta);
 	vector[1] = sin(theta);
 	vector[2] = cos(phi);
+	size = sqrt(vector[0] * vector[0] + vector[1] * vector[1]
+			+ vector[2] * vector[2]);
+	vector[0] /= size;
+	vector[1] /= size;
+	vector[2] /= size;
 }
 
 void	get_horizontal_unit(double h_unit[3], double vector[3])
@@ -34,7 +41,7 @@ void	get_horizontal_unit(double h_unit[3], double vector[3])
 	h_unit[1] /= size;
 }
 
-void	get_vertical_unit(double v_unit[3], double h_unit[3], double vec[3])
+void	get_vertical_unit(double v_unit[3], double vec[3], double h_unit[3])
 {
 	double	size;
 

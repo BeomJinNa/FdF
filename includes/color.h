@@ -6,7 +6,7 @@
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 22:23:16 by bena              #+#    #+#             */
-/*   Updated: 2023/05/10 14:08:15 by bena             ###   ########.fr       */
+/*   Updated: 2023/05/24 00:40:39 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,4 +18,5 @@ int	transparency(int trgb);
 int	red(int trgb);
 int	green(int trgb);
 int	blue(int trgb);
+int	mix_color(int c1, int c2, int w1, int w2);
 #endif
