@@ -6,11 +6,10 @@
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 13:05:04 by bena              #+#    #+#             */
-/*   Updated: 2023/05/25 03:57:38 by bena             ###   ########.fr       */
+/*   Updated: 2023/05/25 04:57:34 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <math.h>
 #include "mlx.h"
 #include "s_map.h"
 #include "image.h"

@@ -6,11 +6,10 @@
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 06:01:53 by bena              #+#    #+#             */
-/*   Updated: 2023/05/25 04:30:32 by bena             ###   ########.fr       */
+/*   Updated: 2023/05/25 04:56:30 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <math.h>
 #include "s_map.h"
 
 void	refresh_centroid(t_status *stat)
