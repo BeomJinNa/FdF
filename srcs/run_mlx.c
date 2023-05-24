@@ -6,7 +6,7 @@
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 06:50:53 by bena              #+#    #+#             */
-/*   Updated: 2023/05/24 07:23:51 by bena             ###   ########.fr       */
+/*   Updated: 2023/05/25 01:27:40 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ static void	init_stat(t_status *stat);
 static void	init_stat2(t_status *stat);
 static void	alloc_hooks(t_status *stat);
 
-#include <stdio.h> //TEST
 void	run_mlx(t_status *stat)
 {
 	init_stat(stat);
@@ -41,21 +40,10 @@ void	run_mlx(t_status *stat)
 	alloc_hooks(stat);
 	write_dots_info(stat);
 	create_dist_index(stat);
-	refresh_dist_index(stat);
 	if (stat->map.index == NULL)
 		close_window(stat);
+	refresh_dist_index(stat);
 	write_proj_info(stat);
-	//TEST
-//	for (int i = 0 ; i < stat->map.height ; i++)
-//	{
-//		for (int j = 0 ; j < stat->map.width ; j++)
-//			printf("%6.1f ", stat->map.point[i][j].distance);
-//		printf("\n");
-//	}
-//	t_point **ptr = stat->map.index;
-//	for (int i = 0 ; i < stat->map.height * stat->map.width ; i++)
-//		printf("i: %d, j: %d, (%3d, %3d, %3.1f), dist: %4.1f\n", (*(ptr + i))->i, (*(ptr + i))->j, (*(ptr + i))->proj_x, (*(ptr + i))->proj_y, (*(ptr + i))->z, (*(ptr + i))->distance);
-	//TESTEND
 	draw_lines(stat);
 	mlx_loop(stat->mlx);
 }
