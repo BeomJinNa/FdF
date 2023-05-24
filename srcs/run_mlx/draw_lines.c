@@ -6,7 +6,7 @@
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 13:05:04 by bena              #+#    #+#             */
-/*   Updated: 2023/05/25 04:57:34 by bena             ###   ########.fr       */
+/*   Updated: 2023/05/25 06:15:39 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void	draw_lines(t_status *stat)
 		draw_lines_at_the_point(&image, point, stat);
 		index++;
 	}
-	//sync 기능 나중에 추가할 것
 	mlx_put_image_to_window(stat->mlx, stat->win, image.img, 0, 0);
 	mlx_destroy_image(stat->mlx, image.img);
 }

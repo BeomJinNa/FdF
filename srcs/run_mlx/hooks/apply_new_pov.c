@@ -6,25 +6,20 @@
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 01:33:54 by bena              #+#    #+#             */
-/*   Updated: 2023/05/25 04:33:08 by bena             ###   ########.fr       */
+/*   Updated: 2023/05/25 07:02:08 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vector.h"
 #include "mlx_run_functions.h"
 
-void	refresh_centroid(t_status *stat);
-
 void	apply_new_pov(t_status *stat)
 {
 	sphere_to_vec(stat->pov_vec, stat->rotate_theta, stat->rotate_phi);
 	get_horizontal_unit(stat->proj_vec_x, stat->rotate_theta);
 	get_vertical_unit(stat->proj_vec_y, stat->pov_vec, stat->proj_vec_x);
-	//*1000은 parallel에서는 수정되어야 함 적당한 값으로
 	refresh_centroid(stat);
-	stat->pov_i = stat->centroid_i - stat->pov_vec[0] * stat->scale * 1000;
-	stat->pov_j = stat->centroid_j - stat->pov_vec[1] * stat->scale * 1000;
-	stat->pov_k = stat->centroid_k - stat->pov_vec[2] * stat->scale * 1000;
+	refresh_view_point(stat);
 	write_dots_info(stat);
 	refresh_dist_index(stat);
 	write_proj_info(stat);

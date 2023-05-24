@@ -6,15 +6,13 @@
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 04:37:17 by bena              #+#    #+#             */
-/*   Updated: 2023/05/25 04:49:19 by bena             ###   ########.fr       */
+/*   Updated: 2023/05/25 07:02:29 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
 #include "mlx_run_functions.h"
 #include "vector.h"
-
-void	apply_new_pov(t_status *stat);
 
 void	reset_settings(t_status *stat)
 {
@@ -27,7 +25,8 @@ void	reset_settings(t_status *stat)
 	sphere_to_vec(stat->pov_vec, stat->rotate_theta, stat->rotate_phi);
 	get_horizontal_unit(stat->proj_vec_x, stat->rotate_theta);
 	get_vertical_unit(stat->proj_vec_y, stat->pov_vec, stat->proj_vec_x);
-	get_init_view_point(stat);
+	refresh_centroid(stat);
+	refresh_view_point(stat);
 	stat->colormap = (void *)0;
 	write_dots_info(stat);
 	refresh_dist_index(stat);

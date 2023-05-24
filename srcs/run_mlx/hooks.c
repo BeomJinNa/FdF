@@ -6,7 +6,7 @@
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 15:13:22 by bena              #+#    #+#             */
-/*   Updated: 2023/05/25 04:41:30 by bena             ###   ########.fr       */
+/*   Updated: 2023/05/25 06:59:08 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@ int	press_key(int keycode, t_status *stat)
 	if (keycode == KEY_ESCAPE)
 		close_window(stat);
 	else if (keycode == KEY_W)
-		rotate_view_up(stat);
+		rotate_view_down(stat);
 	else if (keycode == KEY_A)
 		rotate_view_left(stat);
 	else if (keycode == KEY_S)
-		rotate_view_down(stat);
+		rotate_view_up(stat);
 	else if (keycode == KEY_D)
 		rotate_view_right(stat);
 	else if (keycode == KEY_H)

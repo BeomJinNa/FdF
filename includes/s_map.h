@@ -6,7 +6,7 @@
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 03:58:53 by bena              #+#    #+#             */
-/*   Updated: 2023/05/25 02:46:03 by bena             ###   ########.fr       */
+/*   Updated: 2023/05/25 06:27:32 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ typedef struct s_status
 	double	pov_vec[3];
 	double	proj_vec_x[3];
 	double	proj_vec_y[3];
+	double	ratio_of_win_to_map;
 	int		(*colormap)(int, int);
 	t_map	map;
 }			t_status;
