@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate_view.c                                      :+:      :+:    :+:   */
+/*   shift_view.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 01:05:22 by bena              #+#    #+#             */
-/*   Updated: 2023/05/25 03:12:13 by bena             ###   ########.fr       */
+/*   Updated: 2023/05/25 02:48:20 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,40 +15,26 @@
 
 void	apply_new_pov(t_status *stat);
 
-void	rotate_view_up(t_status *stat)
+void	shift_view_up(t_status *stat)
 {
-	if (stat->rotate_phi > M_PI / 24)
-		stat->rotate_phi -= M_PI / 24;
-	else
-		stat->rotate_phi = 0;
+	stat->offset_y -= 30;
 	apply_new_pov(stat);
 }
 
-void	rotate_view_down(t_status *stat)
+void	shift_view_down(t_status *stat)
 {
-	if (stat->rotate_phi < M_PI * 23 / 24)
-		stat->rotate_phi += M_PI / 24;
-	else
-		stat->rotate_phi = M_PI;
+	stat->offset_y += 30;
 	apply_new_pov(stat);
 }
 
-void	rotate_view_left(t_status *stat)
+void	shift_view_left(t_status *stat)
 {
-	stat->rotate_theta -= M_PI / 24;
-	if (stat->rotate_theta < -M_PI)
-		stat->rotate_theta += 2 * M_PI;
-	else if (stat->rotate_theta > M_PI)
-		stat->rotate_theta -= 2 * M_PI;
+	stat->offset_x -= 30;
 	apply_new_pov(stat);
 }
 
-void	rotate_view_right(t_status *stat)
+void	shift_view_right(t_status *stat)
 {
-	stat->rotate_theta += M_PI / 24;
-	if (stat->rotate_theta < -M_PI)
-		stat->rotate_theta += 2 * M_PI;
-	else if (stat->rotate_theta > M_PI)
-		stat->rotate_theta -= 2 * M_PI;
+	stat->offset_x += 30;
 	apply_new_pov(stat);
 }

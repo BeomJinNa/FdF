@@ -6,7 +6,7 @@
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 16:52:35 by bena              #+#    #+#             */
-/*   Updated: 2023/05/24 05:13:49 by bena             ###   ########.fr       */
+/*   Updated: 2023/05/25 03:47:27 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ void	sphere_to_vec(double vector[3], double theta, double phi)
 {
 	double	size;
 
-	vector[0] = cos(theta);
-	vector[1] = sin(theta);
+	vector[0] = cos(theta) * sin(phi);
+	vector[1] = sin(theta) * sin(phi);
 	vector[2] = cos(phi);
 	size = sqrt(vector[0] * vector[0] + vector[1] * vector[1]
 			+ vector[2] * vector[2]);
@@ -27,18 +27,11 @@ void	sphere_to_vec(double vector[3], double theta, double phi)
 	vector[2] /= size;
 }
 
-void	get_horizontal_unit(double h_unit[3], double vector[3])
+void	get_horizontal_unit(double h_unit[3], double theta)
 {
-	double	size;
-
-	h_unit[0] = - (vector[1] * vector[2]);
-	h_unit[1] = vector[0] * vector[2];
+	h_unit[0] = sin(theta);
+	h_unit[1] = -cos(theta);
 	h_unit[2] = 0;
-	size = sqrt(h_unit[0] * h_unit[0] + h_unit[1] * h_unit[1]);
-	if (vector[2] > 0)
-		size = -size;
-	h_unit[0] /= size;
-	h_unit[1] /= size;
 }
 
 void	get_vertical_unit(double v_unit[3], double vec[3], double h_unit[3])

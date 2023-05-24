@@ -6,14 +6,14 @@
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 03:57:01 by bena              #+#    #+#             */
-/*   Updated: 2023/05/24 08:14:59 by bena             ###   ########.fr       */
+/*   Updated: 2023/05/25 03:57:03 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "s_map.h"
 
-void 		convert_line_feed_to_space(char *line);
+void		convert_line_feed_to_space(char *line);
 static void	import_file(t_list **map, int fd);
 static void	write_map_from_text(t_map *map, t_list *text);
 static int	get_point_array(t_point **array, char *line);

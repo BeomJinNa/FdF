@@ -6,7 +6,7 @@
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 06:50:53 by bena              #+#    #+#             */
-/*   Updated: 2023/05/25 01:27:40 by bena             ###   ########.fr       */
+/*   Updated: 2023/05/25 03:52:42 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,11 @@
 #include "libft.h"
 #include "mlx.h"
 #include "e_events.h"
-#include "s_map.h"
+#include "hooks.h"
+#include "mlx_run_functions.h"
+#include "vector.h"
 
-void		get_init_view_point(t_status *stat);
-int			close_window(t_status *stat);
-int			press_key(int keycode, t_status *stat);
 void		release_points(t_point **point);
-void		write_dots_info(t_status *stat);
-void		write_proj_info(t_status *stat);
-void		create_dist_index(t_status *stat);
-void		refresh_dist_index(t_status *stat);
-void		draw_lines(t_status *stat);
-void		sphere_to_vec(double *vector, double theta, double phi);
-void		get_horizontal_unit(double h_unit[3], double vector[3]);
-void		get_vertical_unit(double v_unit[3], double vec[3],
-				double h_unit[3]);
 static void	init_stat(t_status *stat);
 static void	init_stat2(t_status *stat);
 static void	alloc_hooks(t_status *stat);
@@ -68,7 +58,7 @@ static void	init_stat(t_status *stat)
 static void	init_stat2(t_status *stat)
 {
 	sphere_to_vec(stat->pov_vec, stat->rotate_theta, stat->rotate_phi);
-	get_horizontal_unit(stat->proj_vec_x, stat->pov_vec);
+	get_horizontal_unit(stat->proj_vec_x, stat->rotate_theta);
 	get_vertical_unit(stat->proj_vec_y, stat->pov_vec, stat->proj_vec_x);
 	get_init_view_point(stat);
 	stat->field_of_view = 0;

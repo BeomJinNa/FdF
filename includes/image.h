@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   convert_line_feed_to_space.c                       :+:      :+:    :+:   */
+/*   image.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/24 08:10:52 by bena              #+#    #+#             */
-/*   Updated: 2023/05/25 03:57:19 by bena             ###   ########.fr       */
+/*   Created: 2023/05/25 03:42:53 by bena              #+#    #+#             */
+/*   Updated: 2023/05/25 03:44:30 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef IMAGE_H
+# define IMAGE_H
 
-void	convert_line_feed_to_space(char *line)
-{
-	char	*ptr;
+# include "s_img.h"
 
-	ptr = ft_strchr(line, '\n');
-	if (ptr != NULL)
-		*ptr = ' ';
-}
+void	img_mlx_pixel_put(t_img *data, int x, int y, int color);
+void	get_image_address(t_img *img);
+#endif

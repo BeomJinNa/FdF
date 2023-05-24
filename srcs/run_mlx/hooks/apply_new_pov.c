@@ -6,25 +6,17 @@
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 01:33:54 by bena              #+#    #+#             */
-/*   Updated: 2023/05/25 01:39:33 by bena             ###   ########.fr       */
+/*   Updated: 2023/05/25 03:59:10 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "s_map.h"
-
-void		sphere_to_vec(double *vector, double theta, double phi);
-void		get_horizontal_unit(double h_unit[3], double vector[3]);
-void		get_vertical_unit(double v_unit[3], double vec[3],
-				double h_unit[3]);
-void		write_dots_info(t_status *stat);
-void		refresh_dist_index(t_status *stat);
-void		write_proj_info(t_status *stat);
-void		draw_lines(t_status *stat);
+#include "vector.h"
+#include "mlx_run_functions.h"
 
 void	apply_new_pov(t_status *stat)
 {
 	sphere_to_vec(stat->pov_vec, stat->rotate_theta, stat->rotate_phi);
-	get_horizontal_unit(stat->proj_vec_x, stat->pov_vec);
+	get_horizontal_unit(stat->proj_vec_x, stat->rotate_theta);
 	get_vertical_unit(stat->proj_vec_y, stat->pov_vec, stat->proj_vec_x);
 	//*1000은 parallel에서는 수정되어야 함 적당한 값으로
 	stat->pov_i = stat->centroid_i - stat->pov_vec[0] * stat->scale * 1000;

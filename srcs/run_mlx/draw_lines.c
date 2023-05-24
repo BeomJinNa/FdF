@@ -6,18 +6,16 @@
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 13:05:04 by bena              #+#    #+#             */
-/*   Updated: 2023/05/25 01:32:52 by bena             ###   ########.fr       */
+/*   Updated: 2023/05/25 03:57:38 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
 #include "mlx.h"
 #include "s_map.h"
-#include "s_img.h"
+#include "image.h"
 #include "color.h"
 
-void		img_mlx_pixel_put(t_img *data, int x, int y, int color);
-void		get_image_address(t_img *img);
 int			ft_abs(int num);
 static void	draw_lines_at_the_point(t_img *img, t_point *point, t_status *stat);
 static void	connect_two_points(t_point *p1, t_point *p2,
@@ -84,7 +82,7 @@ static void	connect_two_points(t_point *p1, t_point *p2,
 	{
 		get_next_pixel(&line);
 		if (line.x >= 0 && line.y >= 0
-				&& line.x < stat->win_width && line.y < stat->win_height)
+			&& line.x < stat->win_width && line.y < stat->win_height)
 			img_mlx_pixel_put(img, line.x, line.y, line.color);
 	}
 }

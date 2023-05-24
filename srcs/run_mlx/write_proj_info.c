@@ -6,15 +6,13 @@
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 16:40:49 by bena              #+#    #+#             */
-/*   Updated: 2023/05/24 06:50:24 by bena             ###   ########.fr       */
+/*   Updated: 2023/05/25 03:53:41 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
-#include "s_map.h"
+#include "vector.h"
 
-void		get_displacement(double disp[3], t_point *point, t_status *stat);
-double		dot_product(double v1[3], double v2[3]);
 static void	proj_isometric(t_status *stat);
 static void	set_projected_point(t_point *point, t_status *stat);
 //static void	proj_parallel(t_status *stat);

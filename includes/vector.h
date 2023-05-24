@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   convert_line_feed_to_space.c                       :+:      :+:    :+:   */
+/*   vector.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/24 08:10:52 by bena              #+#    #+#             */
-/*   Updated: 2023/05/25 03:57:19 by bena             ###   ########.fr       */
+/*   Created: 2023/05/25 03:47:36 by bena              #+#    #+#             */
+/*   Updated: 2023/05/25 03:50:12 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef VECTOR_H
+# define VECTOR_H
 
-void	convert_line_feed_to_space(char *line)
-{
-	char	*ptr;
+# include "s_map.h"
 
-	ptr = ft_strchr(line, '\n');
-	if (ptr != NULL)
-		*ptr = ' ';
-}
+void	sphere_to_vec(double vector[3], double theta, double phi);
+void	get_horizontal_unit(double h_unit[3], double theta);
+void	get_vertical_unit(double v_unit[3], double vec[3], double h_unit[3]);
+void	get_displacement(double disp[3], t_point *point, t_status *stat);
+double	dot_product(double v1[3], double v2[3]);
+#endif

@@ -6,16 +6,14 @@
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 15:57:04 by bena              #+#    #+#             */
-/*   Updated: 2023/05/15 18:57:29 by bena             ###   ########.fr       */
+/*   Updated: 2023/05/25 03:58:11 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
-#include "s_map.h"
 #include "color.h"
+#include "vector.h"
 
-void	get_displacement(double disp[3], t_point *point, t_status *stat);
-double	dot_product(double v1[3], double v2[3]);
 static double	get_distance(t_point *point, t_status *stat);
 
 void	write_dots_info(t_status *stat)
