@@ -6,7 +6,7 @@
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 03:38:24 by bena              #+#    #+#             */
-/*   Updated: 2023/05/25 03:51:58 by bena             ###   ########.fr       */
+/*   Updated: 2023/05/25 04:35:40 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,9 @@ void	shift_view_up(t_status *stat);
 void	shift_view_down(t_status *stat);
 void	shift_view_left(t_status *stat);
 void	shift_view_right(t_status *stat);
+void	zoom_in(t_status *stat);
+void	zoom_out(t_status *stat);
+void	increase_z_ratio(t_status *stat);
+void	decrease_z_ratio(t_status *stat);
+void	reset_settings(t_status *stat);
 #endif

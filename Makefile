@@ -36,8 +36,12 @@ SRCS	= srcs/main.c \
 		  srcs/run_mlx/get_init_view_point.c \
 		  srcs/run_mlx/hooks.c \
 		  srcs/run_mlx/hooks/apply_new_pov.c \
+		  srcs/run_mlx/hooks/refresh_centroid.c \
+		  srcs/run_mlx/hooks/reset_settings.c \
 		  srcs/run_mlx/hooks/rotate_view.c \
 		  srcs/run_mlx/hooks/shift_view.c \
+		  srcs/run_mlx/hooks/z_ratio.c \
+		  srcs/run_mlx/hooks/zoom.c \
 		  srcs/run_mlx/mlx_img.c \
 		  srcs/run_mlx/refresh_dist_index.c \
 		  srcs/run_mlx/vector.c \

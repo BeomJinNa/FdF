@@ -6,7 +6,7 @@
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 06:50:53 by bena              #+#    #+#             */
-/*   Updated: 2023/05/25 03:52:42 by bena             ###   ########.fr       */
+/*   Updated: 2023/05/25 04:49:55 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,9 @@ static void	init_stat(t_status *stat)
 	stat->z_ratio = 1.0;
 	stat->rotate_theta = M_PI * 3 / 4;
 	stat->rotate_phi = M_PI * 3 / 4;
+	stat->field_of_view = 0;
+	stat->offset_x = 0;
+	stat->offset_y = 0;
 }
 
 static void	init_stat2(t_status *stat)
@@ -61,9 +64,6 @@ static void	init_stat2(t_status *stat)
 	get_horizontal_unit(stat->proj_vec_x, stat->rotate_theta);
 	get_vertical_unit(stat->proj_vec_y, stat->pov_vec, stat->proj_vec_x);
 	get_init_view_point(stat);
-	stat->field_of_view = 0;
-	stat->offset_x = 0;
-	stat->offset_y = 0;
 	stat->colormap = NULL;
 	stat->mlx = mlx_init();
 	stat->win = mlx_new_window(stat->mlx, stat->win_width, stat->win_height,

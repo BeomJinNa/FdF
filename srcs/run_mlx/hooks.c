@@ -6,7 +6,7 @@
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 15:13:22 by bena              #+#    #+#             */
-/*   Updated: 2023/05/25 03:53:15 by bena             ###   ########.fr       */
+/*   Updated: 2023/05/25 04:41:30 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 #include "e_keycodes.h"
 #include "hooks.h"
 
-void	release_points(t_point **point);
+void		release_points(t_point **point);
+static int	press_key2(int keycode, t_status *stat);
 
 int	close_window(t_status *stat)
 {
@@ -46,5 +47,20 @@ int	press_key(int keycode, t_status *stat)
 		shift_view_up(stat);
 	else if (keycode == KEY_L)
 		shift_view_right(stat);
+	return (press_key2(keycode, stat));
+}
+
+static int	press_key2(int keycode, t_status *stat)
+{
+	if (keycode == KEY_I)
+		zoom_in(stat);
+	else if (keycode == KEY_O)
+		zoom_out(stat);
+	else if (keycode == KEY_Q)
+		decrease_z_ratio(stat);
+	else if (keycode == KEY_E)
+		increase_z_ratio(stat);
+	else if (keycode == KEY_R)
+		reset_settings(stat);
 	return (0);
 }
