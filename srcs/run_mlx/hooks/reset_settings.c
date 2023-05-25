@@ -6,7 +6,7 @@
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 04:37:17 by bena              #+#    #+#             */
-/*   Updated: 2023/05/25 07:02:29 by bena             ###   ########.fr       */
+/*   Updated: 2023/05/26 03:08:28 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 void	reset_settings(t_status *stat)
 {
 	stat->z_ratio = 1.0;
+	stat->scale = 0.7 * stat->ratio_of_win_to_map;
 	stat->rotate_theta = M_PI * 3 / 4;
 	stat->rotate_phi = M_PI * 3 / 4;
 	stat->field_of_view = 0;

@@ -6,7 +6,7 @@
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 06:50:53 by bena              #+#    #+#             */
-/*   Updated: 2023/05/25 06:56:28 by bena             ###   ########.fr       */
+/*   Updated: 2023/05/26 05:09:10 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,14 @@ void	run_mlx(t_status *stat)
 
 static void	init_stat(t_status *stat)
 {
-	if (stat->win_width < 100)
-		stat->win_width = 100;
-	if (stat->win_width > 5000)
-		stat->win_width = 5000;
-	if (stat->win_height < 100)
-		stat->win_height = 100;
-	if (stat->win_height > 2500)
-		stat->win_height = 2500;
+	if (stat->win_width < M_WINDOW_WIDTH_MIN)
+		stat->win_width = M_WINDOW_WIDTH_MIN;
+	if (stat->win_width > M_WINDOW_WIDTH_MAX)
+		stat->win_width = M_WINDOW_WIDTH_MAX;
+	if (stat->win_height < M_WINDOW_HEIGHT_MIN)
+		stat->win_height = M_WINDOW_HEIGHT_MIN;
+	if (stat->win_height > M_WINDOW_HEIGHT_MAX)
+		stat->win_height = M_WINDOW_HEIGHT_MAX;
 	stat->win_width_2 = stat->win_width / 2;
 	stat->win_height_2 = stat->win_height / 2;
 	stat->z_ratio = 1.0;
@@ -56,11 +56,11 @@ static void	init_stat(t_status *stat)
 	stat->field_of_view = 0;
 	stat->offset_x = 0;
 	stat->offset_y = 0;
-	stat->ratio_of_win_to_map = sqrt(stat->win_width * stat->win_width
-			+ stat->win_height * stat->win_height)
-		/ sqrt(stat->map.width * stat->map.width
-			+ stat->map.height * stat->map.height);
+	stat->win_diagonal = hypot(stat->win_width, stat->win_height);
+	stat->map_diagonal = hypot(stat->map.width, stat->map.height);
+	stat->ratio_of_win_to_map = stat->win_diagonal / stat->map_diagonal;
 	stat->scale = 0.7 * stat->ratio_of_win_to_map;
+	stat->field_of_view_max = M_FOV_UNIT_PIXELS * 2 * M_PI / stat->win_diagonal;
 }
 
 static void	init_stat2(t_status *stat)

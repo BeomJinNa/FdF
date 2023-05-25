@@ -1,36 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   color.c                                            :+:      :+:    :+:   */
+/*   vector2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/27 22:23:16 by bena              #+#    #+#             */
-/*   Updated: 2023/05/26 04:59:35 by bena             ###   ########.fr       */
+/*   Created: 2023/05/14 16:52:35 by bena              #+#    #+#             */
+/*   Updated: 2023/05/26 04:19:57 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	trgb(int transparency, int red, int green, int blue)
-{
-	return ((transparency << 24) | (red << 16) | (green << 8) | blue);
-}
+#include <math.h>
+#include "vector.h"
 
-int	transparency(int trgb)
+double	get_angular_coordinate(double p[3], double u[3], double h[3])
 {
-	return ((trgb >> 24) & 0xFF);
-}
+	const double	projection_to_u = dot_product(u, p);
+	const double	projection_to_h = dot_product(h, p);
 
-int	red(int trgb)
-{
-	return ((trgb >> 16) & 0xFF);
-}
-
-int	green(int trgb)
-{
-	return ((trgb >> 8) & 0xFF);
-}
-
-int	blue(int trgb)
-{
-	return (trgb & 0xFF);
+	return (
+		acos(
+			projection_to_u / hypot(projection_to_u, projection_to_h)
+		)
+	);
 }

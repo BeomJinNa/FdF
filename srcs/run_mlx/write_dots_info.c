@@ -6,10 +6,11 @@
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 15:57:04 by bena              #+#    #+#             */
-/*   Updated: 2023/05/25 04:58:10 by bena             ###   ########.fr       */
+/*   Updated: 2023/05/26 05:32:57 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <math.h>
 #include "color.h"
 #include "vector.h"
 
@@ -47,7 +48,12 @@ void	write_dots_info(t_status *stat)
 static double	get_distance(t_point *point, t_status *stat)
 {
 	double	displacement[3];
+	double	distance;
 
 	get_displacement(displacement, point, stat);
-	return (dot_product(displacement, stat->pov_vec));
+	distance = sqrt(dot_product(displacement, displacement));
+	if (stat->field_of_view < M_ISOMETRIC_CUTOFF
+		&& dot_product(displacement, stat->pov_vec) < 0)
+		distance = -distance;
+	return (distance);
 }

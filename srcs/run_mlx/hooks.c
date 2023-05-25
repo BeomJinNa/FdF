@@ -6,7 +6,7 @@
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 15:13:22 by bena              #+#    #+#             */
-/*   Updated: 2023/05/25 06:59:08 by bena             ###   ########.fr       */
+/*   Updated: 2023/05/26 04:46:05 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,9 @@ static int	press_key2(int keycode, t_status *stat)
 		increase_z_ratio(stat);
 	else if (keycode == KEY_R)
 		reset_settings(stat);
+	else if (keycode == KEY_Z)
+		decrease_fov(stat);
+	else if (keycode == KEY_X)
+		increase_fov(stat);
 	return (0);
 }

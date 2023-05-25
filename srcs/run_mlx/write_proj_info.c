@@ -6,7 +6,7 @@
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 16:40:49 by bena              #+#    #+#             */
-/*   Updated: 2023/05/25 06:53:08 by bena             ###   ########.fr       */
+/*   Updated: 2023/05/26 05:21:35 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,15 @@
 
 static void	proj_isometric(t_status *stat);
 static void	set_point_projection_isometric(t_point *point, t_status *stat);
-//static void	proj_perspective(t_status *stat);
-//static void	set_point_perspective_parallel(t_point *point, t_status *stat);
+static void	proj_perspective(t_status *stat);
+static void	set_point_projection_perspective(t_point *point, t_status *stat);
 
 void	write_proj_info(t_status *stat)
 {
-	if (fabs(stat->field_of_view) < 0.1)
+	if (fabs(stat->field_of_view) < M_ISOMETRIC_CUTOFF)
 		proj_isometric(stat);
-//	else
-//		proj_perspective(stat);
+	else
+		proj_perspective(stat);
 }
 
 static void	proj_isometric(t_status *stat)
@@ -51,15 +51,15 @@ static void	set_point_projection_isometric(t_point *point, t_status *stat)
 
 	get_displacement(displacement, point, stat);
 	temp = dot_product(displacement, stat->proj_vec_x);
+	point->proj_x = (int)temp + stat->offset_x;
 	if (fabs(temp + (double)stat->offset_x) > (double)stat->win_width_2)
 		point->distance = -1.0;
-	point->proj_x = (int)temp + stat->offset_x;
 	temp = dot_product(displacement, stat->proj_vec_y);
+	point->proj_y = (int)temp + stat->offset_y;
 	if (fabs(temp + (double)stat->offset_y) > (double)stat->win_height_2)
 		point->distance = -1.0;
-	point->proj_y = (int)temp + stat->offset_y;
 }
-/*
+
 static void	proj_perspective(t_status *stat)
 {
 	int		i;
@@ -78,7 +78,33 @@ static void	proj_perspective(t_status *stat)
 	}
 }
 
+#include <stdio.h>
 static void	set_point_projection_perspective(t_point *point, t_status *stat)
 {
+	double	displacement[3];
+	double	d_theta_x;
+	double	d_theta_y;
+
+	printf("displacement (%f, %f, %f)\n", displacement[0], displacement[1], displacement[2]);
+	get_displacement(displacement, point, stat);
+	d_theta_x = get_angular_coordinate(displacement,
+			stat->pov_vec, stat->proj_vec_x);
+	if (dot_product(displacement, stat->proj_vec_x) < 0)
+		d_theta_x = -d_theta_x;
+	point->proj_x = (int)(d_theta_x * M_FOV_UNIT_PIXELS / stat->field_of_view)
+		+ stat->offset_x;
+	if (fabs(d_theta_x * M_FOV_UNIT_PIXELS / stat->field_of_view
+			+ (double)stat->offset_x) > (double)stat->win_width_2)
+		point->distance = -1.0;
+	d_theta_y = get_angular_coordinate(displacement,
+			stat->pov_vec, stat->proj_vec_y);
+	if (dot_product(displacement, stat->proj_vec_y) < 0)
+		d_theta_y = -d_theta_y;
+	point->proj_y = (int)(d_theta_y * M_FOV_UNIT_PIXELS / stat->field_of_view)
+		+ stat->offset_y;
+	if (fabs(d_theta_y * M_FOV_UNIT_PIXELS / stat->field_of_view
+			+ (double)stat->offset_y) > (double)stat->win_height_2)
+		point->distance = -1.0;
+	printf("point(%d, %d) projection : (%d, %d)\n",
+			point->i, point->j, point->proj_x, point->proj_y);
 }
-*/

@@ -6,12 +6,19 @@
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 03:58:53 by bena              #+#    #+#             */
-/*   Updated: 2023/05/25 06:27:32 by bena             ###   ########.fr       */
+/*   Updated: 2023/05/26 05:22:21 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef S_MAP_H
 # define S_MAP_H
+
+# define M_WINDOW_WIDTH_MIN 100
+# define M_WINDOW_WIDTH_MAX 5000
+# define M_WINDOW_HEIGHT_MIN 100
+# define M_WINDOW_HEIGHT_MAX 2500
+# define M_ISOMETRIC_CUTOFF 0.01
+# define M_FOV_UNIT_PIXELS 1000
 
 typedef struct s_line
 {
@@ -73,11 +80,14 @@ typedef struct s_status
 	double	centroid_j;
 	double	centroid_k;
 	double	field_of_view;
+	double	field_of_view_max;
 	double	rotate_theta;
 	double	rotate_phi;
 	double	pov_vec[3];
 	double	proj_vec_x[3];
 	double	proj_vec_y[3];
+	double	win_diagonal;
+	double	map_diagonal;
 	double	ratio_of_win_to_map;
 	int		(*colormap)(int, int);
 	t_map	map;

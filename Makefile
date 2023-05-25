@@ -35,6 +35,7 @@ SRCS	= srcs/main.c \
 		  srcs/run_mlx/ft_abs.c \
 		  srcs/run_mlx/hooks.c \
 		  srcs/run_mlx/hooks/apply_new_pov.c \
+		  srcs/run_mlx/hooks/field_of_view.c \
 		  srcs/run_mlx/hooks/reset_settings.c \
 		  srcs/run_mlx/hooks/rotate_view.c \
 		  srcs/run_mlx/hooks/shift_view.c \
@@ -45,6 +46,7 @@ SRCS	= srcs/main.c \
 		  srcs/run_mlx/refresh_dist_index.c \
 		  srcs/run_mlx/refresh_view_point.c \
 		  srcs/run_mlx/vector.c \
+		  srcs/run_mlx/vector2.c \
 		  srcs/run_mlx/write_dots_info.c \
 		  srcs/run_mlx/write_proj_info.c
 
