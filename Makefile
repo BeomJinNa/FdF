@@ -25,8 +25,11 @@ LIBFT_B	= libft_bonus/libft_bonus.a
 #sources=======================================================================
 
 SRCS	= srcs/main.c \
+		  srcs/errors.c \
 		  srcs/parse_the_map_file.c \
 		  srcs/parse_the_map_file/convert_line_feed_to_space.c \
+		  srcs/parse_the_map_file/get_min_max_value.c \
+		  srcs/parse_the_map_file/release_points.c \
 		  srcs/run_mlx.c \
 		  srcs/run_mlx/color.c \
 		  srcs/run_mlx/color_mix.c \
@@ -38,6 +41,9 @@ SRCS	= srcs/main.c \
 		  srcs/run_mlx/hooks/field_of_view.c \
 		  srcs/run_mlx/hooks/reset_settings.c \
 		  srcs/run_mlx/hooks/rotate_view.c \
+		  srcs/run_mlx/hooks/set_colormap.c \
+		  srcs/run_mlx/hooks/set_colormap/colormap.c \
+		  srcs/run_mlx/hooks/set_colormap/colormap2.c \
 		  srcs/run_mlx/hooks/shift_view.c \
 		  srcs/run_mlx/hooks/z_ratio.c \
 		  srcs/run_mlx/hooks/zoom.c \

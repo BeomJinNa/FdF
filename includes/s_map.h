@@ -6,7 +6,7 @@
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 03:58:53 by bena              #+#    #+#             */
-/*   Updated: 2023/05/26 05:22:21 by bena             ###   ########.fr       */
+/*   Updated: 2023/05/26 07:21:52 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ typedef struct s_map
 	int		height;
 	t_point	**index;
 	t_point	**point;
+	int		min_value;
+	int		max_value;
 }			t_map;
 
 typedef struct s_status
@@ -73,23 +75,19 @@ typedef struct s_status
 	int		offset_y;
 	double	scale;
 	double	z_ratio;
-	double	pov_i;
-	double	pov_j;
-	double	pov_k;
-	double	centroid_i;
-	double	centroid_j;
-	double	centroid_k;
 	double	field_of_view;
 	double	field_of_view_max;
 	double	rotate_theta;
 	double	rotate_phi;
+	double	centroid[3];
+	double	pov[3];
 	double	pov_vec[3];
 	double	proj_vec_x[3];
 	double	proj_vec_y[3];
 	double	win_diagonal;
 	double	map_diagonal;
 	double	ratio_of_win_to_map;
-	int		(*colormap)(int, int);
+	int		(*colormap)(int, struct s_status *stat);
 	t_map	map;
 }			t_status;
 #endif

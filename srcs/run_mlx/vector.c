@@ -6,7 +6,7 @@
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 16:52:35 by bena              #+#    #+#             */
-/*   Updated: 2023/05/26 04:09:23 by bena             ###   ########.fr       */
+/*   Updated: 2023/05/26 07:22:14 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,9 @@ void	get_vertical_unit(double v_unit[3], double vec[3], double h_unit[3])
 
 void	get_displacement(double disp[3], t_point *point, t_status *stat)
 {
-	disp[0] = point->x - stat->pov_i;
-	disp[1] = point->y - stat->pov_j;
-	disp[2] = point->z - stat->pov_k;
+	disp[0] = point->x - stat->pov[0];
+	disp[1] = point->y - stat->pov[1];
+	disp[2] = point->z - stat->pov[2];
 }
 
 double	dot_product(double v1[3], double v2[3])

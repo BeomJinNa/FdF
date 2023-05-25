@@ -6,7 +6,7 @@
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 03:57:01 by bena              #+#    #+#             */
-/*   Updated: 2023/05/25 03:57:03 by bena             ###   ########.fr       */
+/*   Updated: 2023/05/26 07:05:52 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "s_map.h"
 
 void		convert_line_feed_to_space(char *line);
+void		get_min_max_value(t_map *map);
 static void	import_file(t_list **map, int fd);
 static void	write_map_from_text(t_map *map, t_list *text);
 static int	get_point_array(t_point **array, char *line);
@@ -37,6 +38,10 @@ void	parse_the_map_file(t_map *map, int fd)
 	if (text == NULL)
 		return ;
 	write_map_from_text(map, text);
+	if (map->width == 0 || map->height == 0)
+		remove_data(map, NULL);
+	if (map->point != NULL)
+		get_min_max_value(map);
 }
 
 static void	import_file(t_list **map, int fd)
@@ -70,12 +75,11 @@ static void	import_file(t_list **map, int fd)
 
 static void	write_map_from_text(t_map *map, t_list *text)
 {
-	t_list	*list_ptr;
-	t_point	**point_ptr;
-	int		size;
-	int		width;
+	t_list		*list_ptr;
+	t_point		**point_ptr;
+	int			width;
+	const int	size = ft_lstsize(text);
 
-	size = ft_lstsize(text);
 	map->point = (t_point **)malloc(sizeof(t_point *) * (size + 1));
 	if (map->point == NULL)
 		return (ft_lstclear(&text, free));
@@ -129,7 +133,8 @@ static void	remove_data(t_map *map, t_list *text)
 {
 	t_point	**ptr;
 
-	ft_lstclear(&text, free);
+	if (text != NULL)
+		ft_lstclear(&text, free);
 	ptr = map->point;
 	while (*ptr != NULL)
 		free(*ptr++);

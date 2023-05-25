@@ -6,7 +6,7 @@
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 03:38:24 by bena              #+#    #+#             */
-/*   Updated: 2023/05/26 04:46:01 by bena             ###   ########.fr       */
+/*   Updated: 2023/05/26 07:17:41 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,5 @@ void	decrease_z_ratio(t_status *stat);
 void	reset_settings(t_status *stat);
 void	increase_fov(t_status *stat);
 void	decrease_fov(t_status *stat);
+void	set_colormap(t_status *stat);
 #endif

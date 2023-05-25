@@ -1,22 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   color.h                                            :+:      :+:    :+:   */
+/*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/27 22:23:16 by bena              #+#    #+#             */
-/*   Updated: 2023/05/26 07:13:20 by bena             ###   ########.fr       */
+/*   Created: 2023/05/26 06:32:07 by bena              #+#    #+#             */
+/*   Updated: 2023/05/26 06:37:34 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COLOR_H
-# define COLOR_H
+#include <stdio.h>
+#include "libft.h"
 
-int	trgb(int transparency, int red, int green, int blue);
-int	transparency(int trgb);
-int	red(int trgb);
-int	green(int trgb);
-int	blue(int trgb);
-int	mix_color(int c1, int c2, int w1, int w2);
-#endif
+int	wrong_args(void)
+{
+	ft_printf("Usage: ./fdf <file name> [<window width size> <window height size>]\n");
+	return (0);
+}
+
+int	open_error(void)
+{
+	perror("Error opening file");
+	return (1);
+}
+
+int	parsing_error(void)
+{
+	ft_putstr_fd("Error loading map\n", 2);
+	return (1);
+}

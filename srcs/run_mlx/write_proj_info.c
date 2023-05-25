@@ -6,7 +6,7 @@
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 16:40:49 by bena              #+#    #+#             */
-/*   Updated: 2023/05/26 05:21:35 by bena             ###   ########.fr       */
+/*   Updated: 2023/05/26 07:56:47 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,14 +78,12 @@ static void	proj_perspective(t_status *stat)
 	}
 }
 
-#include <stdio.h>
 static void	set_point_projection_perspective(t_point *point, t_status *stat)
 {
 	double	displacement[3];
 	double	d_theta_x;
 	double	d_theta_y;
 
-	printf("displacement (%f, %f, %f)\n", displacement[0], displacement[1], displacement[2]);
 	get_displacement(displacement, point, stat);
 	d_theta_x = get_angular_coordinate(displacement,
 			stat->pov_vec, stat->proj_vec_x);
@@ -105,6 +103,4 @@ static void	set_point_projection_perspective(t_point *point, t_status *stat)
 	if (fabs(d_theta_y * M_FOV_UNIT_PIXELS / stat->field_of_view
 			+ (double)stat->offset_y) > (double)stat->win_height_2)
 		point->distance = -1.0;
-	printf("point(%d, %d) projection : (%d, %d)\n",
-			point->i, point->j, point->proj_x, point->proj_y);
 }

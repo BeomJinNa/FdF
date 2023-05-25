@@ -6,7 +6,7 @@
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 15:57:04 by bena              #+#    #+#             */
-/*   Updated: 2023/05/26 05:32:57 by bena             ###   ########.fr       */
+/*   Updated: 2023/05/26 06:27:07 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	write_dots_info(t_status *stat)
 		{
 			point = &stat->map.point[i][j];
 			if (stat->colormap != (void *)0)
-				point->color = stat->colormap(point->value, 0);
+				point->color = stat->colormap(point->value, stat);
 			else
 				point->color = trgb(0, 255, 255, 255);
 			point->i = i;
