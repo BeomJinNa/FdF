@@ -6,17 +6,17 @@
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 03:58:53 by bena              #+#    #+#             */
-/*   Updated: 2023/05/26 07:21:52 by bena             ###   ########.fr       */
+/*   Updated: 2023/05/26 09:39:39 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef S_MAP_H
 # define S_MAP_H
 
-# define M_WINDOW_WIDTH_MIN 100
-# define M_WINDOW_WIDTH_MAX 5000
-# define M_WINDOW_HEIGHT_MIN 100
-# define M_WINDOW_HEIGHT_MAX 2500
+# define M_WINDOW_WIDTH_MIN 300
+# define M_WINDOW_WIDTH_MAX 2550
+# define M_WINDOW_HEIGHT_MIN 300
+# define M_WINDOW_HEIGHT_MAX 1380
 # define M_ISOMETRIC_CUTOFF 0.01
 # define M_FOV_UNIT_PIXELS 1000
 

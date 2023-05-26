@@ -25,6 +25,9 @@ LIBFT_B	= libft_bonus/libft_bonus.a
 #sources=======================================================================
 
 SRCS	= srcs/main.c \
+		  srcs/are_there_errors_in_args.c \
+		  srcs/are_there_errors_in_args/check_input_data.c \
+		  srcs/are_there_errors_in_args/compare_character.c \
 		  srcs/errors.c \
 		  srcs/parse_the_map_file.c \
 		  srcs/parse_the_map_file/convert_line_feed_to_space.c \
