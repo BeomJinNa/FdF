@@ -6,14 +6,14 @@
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 13:05:04 by bena              #+#    #+#             */
-/*   Updated: 2023/05/25 06:15:39 by bena             ###   ########.fr       */
+/*   Updated: 2023/05/26 12:15:31 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlx.h"
-#include "s_map.h"
 #include "image.h"
 #include "color.h"
+#include "hooks.h"
 
 int			ft_abs(int num);
 static void	draw_lines_at_the_point(t_img *img, t_point *point, t_status *stat);
@@ -31,6 +31,8 @@ void	draw_lines(t_status *stat)
 	t_img		image;
 
 	image.img = mlx_new_image(stat->mlx, stat->win_width, stat->win_height);
+	if (image.img == (void *)0)
+		close_window(stat);
 	get_image_address(&image);
 	index = 0;
 	while (index < size)

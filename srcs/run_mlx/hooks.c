@@ -6,7 +6,7 @@
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 15:13:22 by bena              #+#    #+#             */
-/*   Updated: 2023/05/26 07:23:38 by bena             ###   ########.fr       */
+/*   Updated: 2023/05/26 12:06:33 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ static int	press_key2(int keycode, t_status *stat);
 
 int	close_window(t_status *stat)
 {
-	mlx_destroy_window(stat->mlx, stat->win);
+	if (stat->win != NULL)
+		mlx_destroy_window(stat->mlx, stat->win);
 	if (stat->map.index != NULL)
 		free(stat->map.index);
 	release_points(stat->map.point);

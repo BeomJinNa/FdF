@@ -6,7 +6,7 @@
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 06:50:53 by bena              #+#    #+#             */
-/*   Updated: 2023/05/26 11:40:10 by bena             ###   ########.fr       */
+/*   Updated: 2023/05/26 12:08:52 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void	run_mlx(t_status *stat)
 {
 	init_stat(stat);
 	init_stat2(stat);
+	if (stat->win == NULL)
+		close_window(stat);
 	alloc_hooks(stat);
 	write_dots_info(stat);
 	create_dist_index(stat);
@@ -71,9 +73,12 @@ static void	init_stat2(t_status *stat)
 	refresh_centroid(stat);
 	refresh_view_point(stat);
 	stat->colormap = NULL;
+	stat->mlx = NULL;
+	stat->win = NULL;
 	stat->mlx = mlx_init();
-	stat->win = mlx_new_window(stat->mlx, stat->win_width, stat->win_height,
-			stat->filename);
+	if (stat->mlx != NULL)
+		stat->win = mlx_new_window(stat->mlx, stat->win_width, stat->win_height,
+				stat->filename);
 }
 
 static void	alloc_hooks(t_status *stat)
