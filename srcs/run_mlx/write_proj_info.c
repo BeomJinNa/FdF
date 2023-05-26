@@ -6,13 +6,14 @@
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 16:40:49 by bena              #+#    #+#             */
-/*   Updated: 2023/05/26 07:56:47 by bena             ###   ########.fr       */
+/*   Updated: 2023/05/26 11:37:43 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
 #include "vector.h"
 
+int			ft_abs(int num);
 static void	proj_isometric(t_status *stat);
 static void	set_point_projection_isometric(t_point *point, t_status *stat);
 static void	proj_perspective(t_status *stat);
@@ -52,11 +53,11 @@ static void	set_point_projection_isometric(t_point *point, t_status *stat)
 	get_displacement(displacement, point, stat);
 	temp = dot_product(displacement, stat->proj_vec_x);
 	point->proj_x = (int)temp + stat->offset_x;
-	if (fabs(temp + (double)stat->offset_x) > (double)stat->win_width_2)
+	if (ft_abs(point->proj_x) > stat->win_width_2)
 		point->distance = -1.0;
 	temp = dot_product(displacement, stat->proj_vec_y);
 	point->proj_y = (int)temp + stat->offset_y;
-	if (fabs(temp + (double)stat->offset_y) > (double)stat->win_height_2)
+	if (ft_abs(point->proj_y) > stat->win_height_2)
 		point->distance = -1.0;
 }
 
@@ -91,8 +92,7 @@ static void	set_point_projection_perspective(t_point *point, t_status *stat)
 		d_theta_x = -d_theta_x;
 	point->proj_x = (int)(d_theta_x * M_FOV_UNIT_PIXELS / stat->field_of_view)
 		+ stat->offset_x;
-	if (fabs(d_theta_x * M_FOV_UNIT_PIXELS / stat->field_of_view
-			+ (double)stat->offset_x) > (double)stat->win_width_2)
+	if (ft_abs(point->proj_x) > stat->win_width_2)
 		point->distance = -1.0;
 	d_theta_y = get_angular_coordinate(displacement,
 			stat->pov_vec, stat->proj_vec_y);
@@ -100,7 +100,6 @@ static void	set_point_projection_perspective(t_point *point, t_status *stat)
 		d_theta_y = -d_theta_y;
 	point->proj_y = (int)(d_theta_y * M_FOV_UNIT_PIXELS / stat->field_of_view)
 		+ stat->offset_y;
-	if (fabs(d_theta_y * M_FOV_UNIT_PIXELS / stat->field_of_view
-			+ (double)stat->offset_y) > (double)stat->win_height_2)
+	if (ft_abs(point->proj_y) > stat->win_height_2)
 		point->distance = -1.0;
 }

@@ -6,7 +6,7 @@
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 03:57:01 by bena              #+#    #+#             */
-/*   Updated: 2023/05/26 07:05:52 by bena             ###   ########.fr       */
+/*   Updated: 2023/05/26 10:20:58 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,6 @@ void	parse_the_map_file(t_map *map, int fd)
 	if (text == NULL)
 		return ;
 	write_map_from_text(map, text);
-	if (map->width == 0 || map->height == 0)
-		remove_data(map, NULL);
 	if (map->point != NULL)
 		get_min_max_value(map);
 }
@@ -136,6 +134,8 @@ static void	remove_data(t_map *map, t_list *text)
 	if (text != NULL)
 		ft_lstclear(&text, free);
 	ptr = map->point;
+	if (ptr == NULL)
+		return ;
 	while (*ptr != NULL)
 		free(*ptr++);
 	free(map->point);

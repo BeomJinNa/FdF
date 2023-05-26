@@ -6,7 +6,7 @@
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 17:24:10 by bena              #+#    #+#             */
-/*   Updated: 2023/05/15 19:29:17 by bena             ###   ########.fr       */
+/*   Updated: 2023/05/26 11:26:25 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void		sort(t_point **start, t_point **end);
 static void		finish_sort(t_point **start, t_point **end);
 static void		swap(t_point **a, t_point **b);
-static double	select_pivot(t_point **start);
+static double	select_pivot(t_point **start, t_point **end);
 
 void	refresh_dist_index(t_status *stat)
 {
@@ -32,7 +32,7 @@ static void	sort(t_point **start, t_point **end)
 
 	if (end - start < 3)
 		return (finish_sort(start, end));
-	pivot = select_pivot(start);
+	pivot = select_pivot(start, end);
 	left = start;
 	right = end;
 	while (left < right)
@@ -78,14 +78,14 @@ static void	swap(t_point **a, t_point **b)
 	*b = temp;
 }
 
-static double	select_pivot(t_point **start)
+static double	select_pivot(t_point **start, t_point **end)
 {
 	double	pivot[3];
 	double	temp;
 
 	pivot[0] = (*start)->distance;
-	pivot[1] = (*(start + 1))->distance;
-	pivot[2] = (*(start + 2))->distance;
+	pivot[1] = (*(start + ((end - start) / 2)))->distance;
+	pivot[2] = (*(end))->distance;
 	if (pivot[0] > pivot[1])
 	{
 		temp = pivot[0];

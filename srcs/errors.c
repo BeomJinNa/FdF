@@ -6,7 +6,7 @@
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 06:32:07 by bena              #+#    #+#             */
-/*   Updated: 2023/05/26 06:37:34 by bena             ###   ########.fr       */
+/*   Updated: 2023/05/26 11:42:42 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 int	wrong_args(void)
 {
-	ft_printf("Usage: ./fdf <file name> [<window width size> <window height size>]\n");
+	ft_printf(
+		"Usage: ./fdf <file name> [<window width size> <window height size>]\n");
 	return (0);
 }
 
