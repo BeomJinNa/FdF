@@ -6,7 +6,7 @@
 /*   By: bena <bena@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 15:57:04 by bena              #+#    #+#             */
-/*   Updated: 2023/05/26 06:27:07 by bena             ###   ########.fr       */
+/*   Updated: 2023/05/30 18:59:59 by bena             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static double	get_distance(t_point *point, t_status *stat)
 	double	distance;
 
 	get_displacement(displacement, point, stat);
-	distance = sqrt(dot_product(displacement, displacement));
+	distance = dot_product(displacement, displacement);
 	if (stat->field_of_view < M_ISOMETRIC_CUTOFF
 		&& dot_product(displacement, stat->pov_vec) < 0)
 		distance = -distance;
